@@ -6,12 +6,14 @@ namespace FactoryInsight.Core.Services.DataProvider
 {
     public class Machine
     {
-        public Machine(string name)
+        public Machine(int id, string name)
         {
             if (name == null) throw new ArgumentNullException("name");
             Name = name;
+            Id = id;
         }
 
+        public int Id { get; set; }
         public string Name { get; set; }
         public Status Status { get; set; }
 
