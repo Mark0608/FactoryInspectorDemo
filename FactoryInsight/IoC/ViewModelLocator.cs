@@ -1,7 +1,7 @@
 /*
   In App.xaml:
   <Application.Resources>
-      <vm:ViewModelLocator xmlns:vm="clr-namespace:TryOut"
+      <vm:ViewModelLocator xmlns:vm="clr-namepace:TryOut"
                            x:Key="Locator" />
   </Application.Resources>
   
@@ -12,6 +12,7 @@
   See http://www.galasoft.ch/mvvm
 */
 
+using FactoryInsight.Core.Services.DataProvider;
 using FactoryInsight.Core.ViewModel;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
@@ -42,10 +43,11 @@ namespace FactoryInsight.IoC
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
+            SimpleIoc.Default.Register<IFactoryDataProvider, LocalDataProvider>();
             SimpleIoc.Default.Register<RootViewModel>();
         }
 
-        public RootViewModel Main
+        public RootViewModel RootViewModel
         {
             get
             {

@@ -1,18 +1,8 @@
 ﻿using FactoryInsight.Common;
+using FactoryInsight.Core.ViewModel;
 using FactoryInsight.Data;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Hub Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=321224
@@ -25,7 +15,6 @@ namespace FactoryInsight
     public sealed partial class HubPage : Page
     {
         private NavigationHelper navigationHelper;
-        private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
         /// <summary>
         /// NavigationHelper is used on each page to aid in navigation and 
@@ -34,14 +23,6 @@ namespace FactoryInsight
         public NavigationHelper NavigationHelper
         {
             get { return this.navigationHelper; }
-        }
-
-        /// <summary>
-        /// This can be changed to a strongly typed view model.
-        /// </summary>
-        public ObservableDictionary DefaultViewModel
-        {
-            get { return this.defaultViewModel; }
         }
 
         public HubPage()
@@ -64,9 +45,9 @@ namespace FactoryInsight
         /// session.  The state will be null the first time a page is visited.</param>
         private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            // TODO: Create an appropriate data model for your problem domain to replace the sample data
-            var sampleDataGroup = await SampleDataSource.GetGroupAsync("Group-4");
-            this.DefaultViewModel["Section3Items"] = sampleDataGroup;
+            //var sampleDataGroup = await SampleDataSource.GetGroupAsync("Group-4");
+            //this.DefaultViewModel["Section3Items"] = sampleDataGroup;
+	    ((RootViewModel)DataContext).Init();
         }
 
         /// <summary>

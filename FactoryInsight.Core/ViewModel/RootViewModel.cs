@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using FactoryInsight.Core.Services.DataProvider;
 using GalaSoft.MvvmLight;
 
 namespace FactoryInsight.Core.ViewModel
@@ -16,11 +20,16 @@ namespace FactoryInsight.Core.ViewModel
     /// </summary>
     public class RootViewModel : ViewModelBase
     {
+        private readonly IFactoryDataProvider _factoryDataProvider;
+        private ObservableCollection<Factory> _factories;
+
         /// <summary>
         /// Initializes a new instance of the RootViewModel class.
         /// </summary>
-        public RootViewModel()
+        public RootViewModel(IFactoryDataProvider factoryDataProvider)
         {
+            if (factoryDataProvider == null) throw new ArgumentNullException("factoryDataProvider");
+            _factoryDataProvider = factoryDataProvider;
             ////if (IsInDesignMode)
             ////{
             ////    // Code runs in Blend --> create design time data.
@@ -29,6 +38,23 @@ namespace FactoryInsight.Core.ViewModel
             ////{
             ////    // Code runs "for real"
             ////}
+	    Factories = new ObservableCollection<Factory>();
+        }
+
+        public async void Init()
+        {
+            var factories = await _factoryDataProvider.GetFactories();
+	    Factories.Clear();
+            foreach (var factory in factories)
+            {
+                Factories.Add(factory);
+            }
+        }
+
+        public ObservableCollection<Factory> Factories
+        {
+            get { return _factories; }
+            set { _factories = value; }
         }
     }
 }

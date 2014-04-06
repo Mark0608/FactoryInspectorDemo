@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\DataProvider\Impl\Factory.cs" />
+    <Compile Include="Services\DataProvider\DataObjects\Factory.cs" />
     <Compile Include="Services\DataProvider\IFactoryDataProvider.cs" />
     <Compile Include="Services\DataProvider\Impl\LocalDataProvider.cs" />
-    <Compile Include="Services\DataProvider\Impl\Machine.cs" />
+    <Compile Include="Services\DataProvider\DataObjects\Machine.cs" />
     <Compile Include="Services\DataProvider\Status.cs" />
     <Compile Include="ViewModel\RootViewModel.cs" />
   </ItemGroup>

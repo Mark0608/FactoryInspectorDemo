@@ -5,19 +5,19 @@ namespace FactoryInsight.Core.Services.DataProvider
 {
     public class Factory
     {
-        public Factory(int id, string name, string description)
+        public Factory(int id, string title, string description)
         {
-            if (name == null) throw new ArgumentNullException("name");
+            if (title == null) throw new ArgumentNullException("title");
             if (description == null) throw new ArgumentNullException("description");
 
             Id = id;
-            Name = name;
+            Title = title;
             Description = description;
         }
 
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
         // machines
         public IEnumerable<Machine> Machines { get; set; }

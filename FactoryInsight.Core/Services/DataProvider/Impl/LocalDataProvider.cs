@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FactoryInsight.Core.Services.DataProvider
 {
@@ -18,9 +19,19 @@ namespace FactoryInsight.Core.Services.DataProvider
             _factories.Add(CreateMobileFactory(3, "Tablet Factory", "Producing our latest and greates Windows Tablets.", 120000, 190000));
         }
 
-        public IEnumerable<Factory> GetFactories()
+        public Task<IEnumerable<Factory>> GetFactories()
         {
-            return _factories;
+            return Task.FromResult<IEnumerable<Factory>>(_factories);
+        }
+
+        public Task<IEnumerable<Machine>> GetMachines(int factoryId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Machine> GetMachine(int factoryId, int machineId)
+        {
+            throw new NotImplementedException();
         }
 
         private Factory CreateMobileFactory(int id, string name, string description, int minProduction, int maxProduction)
