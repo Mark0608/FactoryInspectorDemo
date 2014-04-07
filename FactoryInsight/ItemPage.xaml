@@ -36,7 +36,10 @@
         <Grid Grid.Row="1" x:Name="contentRegion"/>
 
         <!-- Back button and page title -->
-        <Grid>
+        <Grid RequestedTheme="Dark">
+            <Grid.Background>
+                <SolidColorBrush Color="{StaticResource NoserOrange}"/>
+            </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>
@@ -47,8 +50,12 @@
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"/>
-            <TextBlock x:Name="pageTitle" Text="{Binding Title}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
-                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
+            <StackPanel Grid.Column="1" Margin="0,0,30,0" VerticalAlignment="Center">
+                <TextBlock Text="{Binding Title}" Style="{StaticResource HeaderTextBlockStyle}"  
+                        IsHitTestVisible="false" TextWrapping="NoWrap"  />
+                <TextBlock Text="{Binding Description}" Style="{StaticResource SubheaderTextBlockStyle}"
+                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,5,0,0" />
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

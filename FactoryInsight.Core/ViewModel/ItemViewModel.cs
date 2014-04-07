@@ -21,10 +21,11 @@ namespace FactoryInsight.Core.ViewModel
         {
             if (factoryDataProvider == null) throw new ArgumentNullException("factoryDataProvider");
             _factoryDataProvider = factoryDataProvider;
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
+            if (IsInDesignMode)
+            {
+                // Code runs in Blend --> create design time data.
+                Factory = new LocalDataProvider().GetFactoriesNonAsync().First();
+            }
             ////else
             ////{
             ////    // Code runs "for real"

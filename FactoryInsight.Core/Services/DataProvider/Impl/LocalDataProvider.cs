@@ -19,6 +19,7 @@ namespace FactoryInsight.Core.Services.DataProvider
             _factories.Add(CreateMobileFactory(3, "Tablet Factory", "Producing our latest and greates Windows Tablets.", 120000, 190000));
         }
 
+        #region IFactoryDataProvider implementation
         public Task<IEnumerable<Factory>> GetFactories()
         {
             return Task.FromResult<IEnumerable<Factory>>(_factories);
@@ -32,6 +33,12 @@ namespace FactoryInsight.Core.Services.DataProvider
         public Task<Machine> GetMachine(int factoryId, int machineId)
         {
             throw new NotImplementedException();
+        }
+        #endregion
+
+        public IEnumerable<Factory> GetFactoriesNonAsync()
+        {
+            return _factories;
         }
 
         #region Factory generation
@@ -130,5 +137,6 @@ namespace FactoryInsight.Core.Services.DataProvider
             return temperaturePoints;
         }
         #endregion
+
     }
 }
