@@ -19,13 +19,18 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Height="150">
-                    <Image Source="Assets/factory.png" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
+                <Border Height="150" Background="{x:Null}">
+                    <Image Source="Assets/factory.png" Stretch="Uniform" AutomationProperties.Name="{Binding Title}"/>
                 </Border>
-                <StackPanel Grid.Row="1" Margin="0,10,0,0">
-                    <TextBlock Text="{Binding Title}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap"/>
-                    <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextBlockStyle}" MaxHeight="60" />
-                </StackPanel>
+                <Grid Grid.Row="1" Margin="0,10,0,0">
+                    <Grid.Background>
+                        <SolidColorBrush Color="{StaticResource NoserOrange}" Opacity="0.6"/>
+                    </Grid.Background>
+                    <StackPanel Margin="10,0">
+                        <TextBlock Text="{Binding Title}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap"/>
+                        <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextBlockStyle}" MaxHeight="60" />
+                    </StackPanel>
+                </Grid>
             </Grid>
         </DataTemplate>
     </Page.Resources>
@@ -60,7 +65,7 @@
             </Hub.Header>
             <HubSection Width="780" Margin="0,0,80,0">
                 <HubSection.Background>
-                	<ImageBrush ImageSource="Assets/modern-factory-building-exterior-jaak-nilson.jpg" Stretch="UniformToFill"/>
+                    <ImageBrush ImageSource="Assets/modern-factory-building-exterior-jaak-nilson.jpg" Stretch="UniformToFill"/>
                 </HubSection.Background>
             </HubSection>
             <HubSection Width="500" x:Uid="Section1Header" Header="Corporate News &gt;" IsHeaderInteractive="True">

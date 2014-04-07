@@ -11,7 +11,7 @@
 
         <x:String x:Key="AppName">FactoryInsight</x:String>
 
-      <ioC:ViewModelLocator x:Key="Locator" />
-
+        <ioC:ViewModelLocator x:Key="Locator" />
+        <Color x:Key="NoserOrange">#FFFF7900</Color>
     </Application.Resources>
 </Application>
