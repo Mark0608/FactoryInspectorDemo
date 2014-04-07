@@ -1,4 +1,5 @@
 ﻿using FactoryInsight.Common;
+using FactoryInsight.Core.ViewModel;
 using FactoryInsight.Data;
 using System;
 using System.Collections.Generic;
@@ -64,11 +65,9 @@ namespace FactoryInsight
         /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested and
         /// a dictionary of state preserved by this page during an earlier
         /// session.  The state will be null the first time a page is visited.</param>
-        private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            // TODO: Create an appropriate data model for your problem domain to replace the sample data
-            var item = await SampleDataSource.GetItemAsync((String)e.NavigationParameter);
-            this.DefaultViewModel["Item"] = item;
+            ((ItemViewModel)DataContext).Init((int)e.NavigationParameter);
         }
 
         #region NavigationHelper registration

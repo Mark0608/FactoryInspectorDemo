@@ -24,9 +24,9 @@ namespace FactoryInsight.Core.Services.DataProvider
             return Task.FromResult<IEnumerable<Factory>>(_factories);
         }
 
-        public Task<IEnumerable<Machine>> GetMachines(int factoryId)
+        public Task<Factory> GetFactory(int factoryId)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(_factories.FirstOrDefault(f => f.Id == factoryId));
         }
 
         public Task<Machine> GetMachine(int factoryId, int machineId)
@@ -34,6 +34,7 @@ namespace FactoryInsight.Core.Services.DataProvider
             throw new NotImplementedException();
         }
 
+        #region Factory generation
         private Factory CreateMobileFactory(int id, string name, string description, int minProduction, int maxProduction)
         {
             var mobileFactory = new Factory(id, name, description)
@@ -128,5 +129,6 @@ namespace FactoryInsight.Core.Services.DataProvider
 
             return temperaturePoints;
         }
+        #endregion
     }
 }

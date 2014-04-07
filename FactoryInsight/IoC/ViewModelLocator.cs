@@ -45,6 +45,7 @@ namespace FactoryInsight.IoC
 
             SimpleIoc.Default.Register<IFactoryDataProvider, LocalDataProvider>();
             SimpleIoc.Default.Register<RootViewModel>();
+            SimpleIoc.Default.Register<ItemViewModel>();
         }
 
         public RootViewModel RootViewModel
@@ -52,6 +53,14 @@ namespace FactoryInsight.IoC
             get
             {
                 return ServiceLocator.Current.GetInstance<RootViewModel>();
+            }
+        }
+
+        public ItemViewModel ItemViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ItemViewModel>();
             }
         }
         

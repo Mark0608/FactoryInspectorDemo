@@ -1,4 +1,5 @@
 ﻿using FactoryInsight.Common;
+using FactoryInsight.Core.Services.DataProvider;
 using FactoryInsight.Core.ViewModel;
 using FactoryInsight.Data;
 using System;
@@ -43,10 +44,8 @@ namespace FactoryInsight
         /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested and
         /// a dictionary of state preserved by this page during an earlier
         /// session.  The state will be null the first time a page is visited.</param>
-        private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            //var sampleDataGroup = await SampleDataSource.GetGroupAsync("Group-4");
-            //this.DefaultViewModel["Section3Items"] = sampleDataGroup;
 	    ((RootViewModel)DataContext).Init();
         }
 
@@ -72,7 +71,7 @@ namespace FactoryInsight
         {
             // Navigate to the appropriate destination page, configuring the new page
             // by passing required information as a navigation parameter
-            var itemId = ((SampleDataItem)e.ClickedItem).UniqueId;
+            var itemId = ((Factory)e.ClickedItem).Id;
             this.Frame.Navigate(typeof(ItemPage), itemId);
         }
         #region NavigationHelper registration
