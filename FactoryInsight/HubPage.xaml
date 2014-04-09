@@ -68,7 +68,7 @@
                     <ImageBrush ImageSource="Assets/modern-factory-building-exterior-jaak-nilson.jpg" Stretch="UniformToFill"/>
                 </HubSection.Background>
             </HubSection>
-            <HubSection Width="500" x:Uid="Section1Header" Header="Corporate News &gt;" IsHeaderInteractive="True">
+            <HubSection Width="500" x:Uid="Section1Header" Header="Corporate News" IsHeaderInteractive="True">
                 <DataTemplate>
                     <Grid>
                         <Grid.RowDefinitions>

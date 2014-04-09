@@ -6,16 +6,21 @@ namespace FactoryInsight.Core.Services.DataProvider
 {
     public class Machine
     {
-        public Machine(int id, string name)
+        private readonly string _imagePath;
+
+        public Machine(int id, string title)
         {
-            if (name == null) throw new ArgumentNullException("name");
-            Name = name;
+            if (title == null) throw new ArgumentNullException("title");
+            Title = title;
             Id = id;
+            _imagePath = string.Format("Assets/{0}.png", Title);
         }
 
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Title { get; set; }
         public Status Status { get; set; }
+
+        public string ImagePath { get { return _imagePath; } }
 
         public double CurrentTemperature
         {
